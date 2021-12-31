@@ -1,0 +1,35 @@
+{
+	"name": "v13-bos-altyapi",
+	"version": "8.1.0",
+	"description": "Yeni v13 boş altyapı. Tavuk Döner#7528 tarafından yapılmıştır!",
+	"main": "index.js",
+	"scripts": {
+		"start": "node index.js",
+		"test": "nodemon index.js",
+		"build": "npm install & node utils/InteractionCommandBuilder.js",
+		"register": "node utils/InteractionCommandBuilder.js"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/TavukDoner7528/v13-Bos-Altyapi.git"
+	},
+	"keywords": [
+		"discord-v13",
+		"v13",
+		"discord-bot",
+		"context-menu",
+		"slash-command"
+	],
+	"author": "Tavuk Döner",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/TavukDoner7528/v13-Bos-Altyapi/issues"
+	},
+	"homepage": "https://github.com/TavukDoner7528/v13-Bos-Altyapi#readme",
+	"dependencies": {
+		"@discordjs/rest": "^0.2.0-canary.0",
+		"ascii-table": "^0.0.9",
+		"discord-api-types": "^0.26.0",
+		"discord.js": "^13.4.0"
+	}
+}
