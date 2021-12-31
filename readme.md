@@ -17,3 +17,11 @@
 
 [Discord Developer Portal](https://discord.com/developers/applications)'dan tüm intentleri açın! Yoksa hata alırsınız.
 
+## Kurulum
+
+- İlk olarak [config.json](https://github.com/TavukDoner7528/discord.js-v13-Bot/blob/master/config.json)'u doldurun.
+- Daha sonra terminalde ```npm run build``` komudunu çalıştırın
+
+**Bu kadar!**
+
+Geriye botu davet edip ```npm start``` ile botu başlatmak!
