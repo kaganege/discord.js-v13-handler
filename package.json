@@ -1,6 +1,6 @@
 {
 	"name": "v13-bos-altyapi",
-	"version": "8.1.0",
+	"version": "8.2.0",
 	"description": "Yeni v13 boş altyapı. Tavuk Döner#7528 tarafından yapılmıştır!",
 	"main": "index.js",
 	"scripts": {
