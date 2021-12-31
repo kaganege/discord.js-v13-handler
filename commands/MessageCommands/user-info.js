@@ -3,6 +3,8 @@ const Timestamp = require("../../utils/DiscordTimestamp.js");
 module.exports = {
 	name: "kullanıcı-bilgi",
 	aliases: ["user-info", "kb"],
+	channel: "GUILD",
+	cooldown: 4,
 	async execute({ message, args, Embed }) {
 		const target =
 			message.mentions.members.first() ||

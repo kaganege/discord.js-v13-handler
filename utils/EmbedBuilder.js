@@ -2,8 +2,6 @@ const Discord = require("discord.js");
 const { MessageEmbed } = Discord;
 const hiddenColor = "#2F3136";
 
-const embed = new MessageEmbed();
-
 module.exports = class EmbedBuilder {
 	/**
 	 * @name EmbedBuilder
@@ -13,14 +11,15 @@ module.exports = class EmbedBuilder {
 	 * @returns {MessageEmbed} MessageEmbed
 	 */
 	constructor({
-		title = String,
-		description = String,
-		color = String || null,
-		footer = Object || String,
-		timestamp = Date || Boolean,
-		thumbnail = String,
-		author = Object || String,
+		title,
+		description,
+		color,
+		footer,
+		timestamp,
+		thumbnail,
+		author,
 	}) {
+		this.embed = new MessageEmbed();
 		this.title = title;
 		this.description = description;
 		this.color = color;
@@ -55,7 +54,9 @@ module.exports = class EmbedBuilder {
 	/**
 	 * @example new Embed().build("error")
 	 */
-	build(template = String || null) {
+	build(template) {
+		const embed = this.embed;
+
 		switch (template) {
 			case "error": {
 				embed.setTitle(this.title || "Hata").setColor(this.color || "RED");

@@ -1,6 +1,8 @@
 const config = require("../config.json");
 const { prefix, owners } = config;
 
+const set = new Set();
+
 const Embed = require("../utils/EmbedBuilder.js");
 
 const escapeRegex = (string) => {
@@ -13,8 +15,6 @@ module.exports = {
 	name: "messageCreate",
 	async execute(message, client, discord) {
 		if (message.author.bot || message.webhookId) return;
-
-		const cooldowns = new discord.Collection();
 
 		const prefixRegex = new RegExp(
 			`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`
@@ -38,24 +38,6 @@ module.exports = {
 
 		if (!command) return;
 
-		if (command.channelType) {
-			switch (command.channelType) {
-				case ("DM" || 1): {
-					if (message.channel.type == "DM") break;
-				}
-					
-				case ("GUILD" || 0): {
-					if (message.channel.type != "DM") {
-						return message.channel.send({
-							embeds: [
-								new Embed({ description: `` })
-							]
-						})
-					}
-				}
-			}
-		}
-
 		if (
 			!message.channel
 				.permissionsFor(client.user.id)
@@ -63,7 +45,7 @@ module.exports = {
 			!uyarıMap.has(message.guild.id)
 		) {
 			message.guild.channels
-				.create(`${client.user.username}-uyarı`, {
+				.create(`önemli-uyarı`, {
 					reason:
 						"Komutları çalıştırabilmem için `SEND_MESSAGES`, `EMBED_LINKS` ve `MANAGE_CHANNELS` yetkilerine ihtiyacım var!",
 				})
@@ -113,6 +95,44 @@ module.exports = {
 						});
 				});
 		}
+
+		const cooldown = owners.includes(message.author.id)
+			? null
+			: require("../utils/Cooldown.js")(command, message.author.id);
+
+		if (cooldown) {
+			if (set.has(message.author.id)) return;
+
+			set.add(message.author.id);
+			return message.channel
+				.send({
+					embeds: [
+						new Embed({
+							description: `Bu komutu tekrar kullanmak için **${(
+								cooldown / 1000
+							)
+								.toFixed(1)
+								.replace(/\./g, ",")}** saniye beklemeniz gerekiyor!`,
+							footer: {
+								text: `${message.author.username} tarafından kullanıldı`,
+								image: message.author.avatarURL({
+									dynamic: true,
+									format: "png",
+								}),
+							},
+							timestamp: new Date(),
+						}).build("error"),
+					],
+				})
+				.then((m) => {
+					if (cooldown > 4) {
+						setTimeout(() => m.delete(), Number(cooldown));
+					} else {
+						setTimeout(() => m.delete(), 5000);
+					}
+				});
+		}
+
 		if (command.only) {
 			switch (command.only) {
 				case "owners": {
@@ -121,6 +141,14 @@ module.exports = {
 							embeds: [
 								new Embed({
 									description: "Bu komutu sadece sahiplerim kullanabilir!",
+									footer: {
+										text: `${message.author.username} tarafından kullanıldı.`,
+										image: message.author.avatarURL({
+											dynamic: true,
+											format: "png",
+										}),
+									},
+									timestamp: new Date(),
 								}).build("error"),
 							],
 						});
@@ -143,17 +171,94 @@ module.exports = {
 										client.users.cache.get(command.only).tag
 									}\` kullanabilir!`,
 									footer: {
-										text: `${message.author.username} tarafından istendi.`,
+										text: `${message.author.username} tarafından kullanıldı.`,
 										image: message.author.avatarURL({
 											dynamic: true,
 											format: "png",
 										}),
 									},
+									timestamp: new Date(),
 								}).build("error"),
 							],
 						});
 					}
 					break;
+				}
+			}
+		}
+
+		if (command.channel) {
+			switch (command.channel) {
+				case "DM" || 1: {
+					if (message.channel.type != "DM") {
+						return message.channel
+							.send({
+								embeds: [
+									new Embed({
+										description: `Bu komut sadece **Özel Mesajlar**da çalışır!`,
+										footer: {
+											text: `${message.author.username} tarafından kullanıldı.`,
+											image: message.author.avatarURL({
+												dynamic: true,
+												format: "png",
+											}),
+										},
+										timestamp: new Date(),
+									}).build("error"),
+								],
+							})
+							.del(10000);
+					}
+					break;
+				}
+
+				case "GUILD" || 0: {
+					if (message.channel.type == "DM") {
+						return message.channel
+							.send({
+								embeds: [
+									new Embed({
+										description: `Bu komut sadece **Sunucularda**da çalışır!`,
+										footer: {
+											text: `${message.author.username} tarafından kullanıldı.`,
+											image: message.author.avatarURL({
+												dynamic: true,
+												format: "png",
+											}),
+										},
+										timestamp: new Date(),
+									}).build("error"),
+								],
+							})
+							.del(10000);
+					}
+					break;
+				}
+
+				default: {
+					if (typeof command.channel != "string") break;
+
+					return message.channel
+						.send({
+							embeds: [
+								new Embed({
+									description: `Bu komut sadece ${client.channels.cache
+										.get(command.channel)
+										.toString()} (\`${
+										command.channel
+									}\`) kanalında kullanabilir!`,
+									footer: {
+										text: `${message.author.username} tarafından kullanıldı.`,
+										image: message.author.avatarURL({
+											dynamic: true,
+											format: "png",
+										}),
+									},
+									timestamp: new Date(),
+								}).build("error"),
+							],
+						})
+						.del(10000);
 				}
 			}
 		}
