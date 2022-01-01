@@ -9,6 +9,13 @@
   </p>
 </div>
 
+# İçindekiler
+
+- [Intent](#intent)
+- [Kurulum](#kurulum)
+- [Interaction Command Register](#interaction-command-register)
+- [İletişim](#iletişim)
+
 ## Intent
 
 <div>
