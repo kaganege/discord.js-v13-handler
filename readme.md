@@ -24,7 +24,7 @@
 
 **Bu kadar!**
 
-Geriye botu davet edip ```npm start``` ile botu başlatmak!
+Geriye botu davet edip ```npm start``` ile botu başlatmak kaldı!
 
 ## Interaction Command Register
 
