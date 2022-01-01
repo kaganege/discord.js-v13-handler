@@ -1,7 +1,7 @@
 <div align="center">
   <br>
   <p>
-    <img src="assets/bot.png" alt="discord">
+    <img src="https://i.vgy.me/8KJHtQ.png" alt="discord">
   </p>
   <br>
   <p>
