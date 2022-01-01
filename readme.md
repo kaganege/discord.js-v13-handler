@@ -28,7 +28,7 @@ Geriye botu davet edip ```npm start``` ile botu başlatmak!
 
 ## Interaction Command Register
 
-Etkileşim komutlarını eklemek için terminale ```npm run register``` yazmanız yeterli.
+Etkileşim komutlarını apiye göndermek için terminale ```npm run register``` yazmanız yeterli.
 
 ## İletişim
 
