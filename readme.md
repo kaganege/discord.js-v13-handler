@@ -20,8 +20,18 @@
 ## Kurulum
 
 - İlk olarak [config.json](https://github.com/TavukDoner7528/discord.js-v13-Bot/blob/master/config.json)'u doldurun.
-- Daha sonra terminalde ```npm run build``` komudunu çalıştırın
+- Daha sonra terminalde ```npm run build``` komudunu çalıştırın.
 
 **Bu kadar!**
 
 Geriye botu davet edip ```npm start``` ile botu başlatmak!
+
+## Interaction Command Register
+
+Etkileşim komutlarını eklemek için terminale ```npm run register``` yazmanız yeterli.
+
+## İletişim
+
+Bir bug veya hata olursa [burdan](https://github.com/TavukDoner7528/discord.js-v13-Bot/issues) bildirebilirsiniz.
+
+Discord: [Tavuk Döner#7528](https://discord.com/users/729651204216455229)
