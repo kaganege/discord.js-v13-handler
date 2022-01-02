@@ -38,7 +38,9 @@ Geriye botu davet edip ```npm start``` ile botu başlatmak kaldı!
 ## Özellikler
 
 - Slash Commands:<br>
-> ![slash-commands](https://i.vgy.me/lU8Mz8.gif)
+> ![slash-commands](https://i.vgy.me/lU8Mz8.gif)<br>
+- Context Menus:<br>
+> ![context-menus](https://i.vgy.me/iI94pJ.gif)
 
 ## Interaction Command Register
 
