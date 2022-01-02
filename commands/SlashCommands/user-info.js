@@ -9,7 +9,7 @@ module.exports = {
 			option
 				.setName("kullanıcı")
 				.setDescription("Bilgileri gösterilecek kullanıcı")
-				.setRequired(true)
+				.setRequired(false)
 		),
 
 	async execute({ interaction, client, Embed }) {
