@@ -13,6 +13,7 @@ module.exports = {
 		await interaction.reply({
 			embeds: [
 				new Embed({
+					thumbnail: target.user.avatarURL({ dynamic: true, format: "png" }),
 					title: `Kullanıcı bilgileri`,
 					description: `
 					**Etiket:** ${target.user.toString()}
