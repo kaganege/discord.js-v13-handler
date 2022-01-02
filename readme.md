@@ -48,6 +48,6 @@ Etkileşim komutlarını apiye göndermek için terminale ```npm run register```
 
 Bir bug veya hata olursa [burdan](https://github.com/TavukDoner7528/discord.js-v13-Bot/issues) bildirebilirsiniz.
 
-![profile](https://discord.c99.nl/widget/theme-4/729651204216455229.png)
+![Tavuk Döner#7528](https://discord.c99.nl/widget/theme-4/729651204216455229.png)
 <br>
 Discord: [Tavuk Döner#7528](https://discord.com/users/729651204216455229)
