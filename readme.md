@@ -14,6 +14,7 @@
 
 - [Intent](#intent)
 - [Kurulum](#kurulum)
+- [Özellikler](#özellikler)
 - [Interaction Command Register](#interaction-command-register)
 - [İletişim](#iletişim)
 
@@ -34,6 +35,11 @@
 
 Geriye botu davet edip ```npm start``` ile botu başlatmak kaldı!
 
+## Özellikler
+
+- Slash Commands
+
+
 ## Interaction Command Register
 
 Etkileşim komutlarını apiye göndermek için terminale ```npm run register``` yazmanız yeterli.
@@ -43,3 +49,4 @@ Etkileşim komutlarını apiye göndermek için terminale ```npm run register```
 Bir bug veya hata olursa [burdan](https://github.com/TavukDoner7528/discord.js-v13-Bot/issues) bildirebilirsiniz.
 
 Discord: [Tavuk Döner#7528](https://discord.com/users/729651204216455229)
+![profile](https://discord.c99.nl/widget/theme-4/729651204216455229.png)
