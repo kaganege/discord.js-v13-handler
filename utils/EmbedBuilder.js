@@ -91,7 +91,7 @@ module.exports = class EmbedBuilder {
 				this.timestamp ? embed.setTimestamp(this.timestamp) : null;
 				this.thumbnail ? embed.setThumbnail(this.thumbnail) : null;
 				this.footer
-					? embed.setFooter(this.footer.text, this.footer.image || null)
+					? embed.setFooter({text=this.footer.text, iconURL=this.footer.image || null})
 					: null;
 
 				return embed;
